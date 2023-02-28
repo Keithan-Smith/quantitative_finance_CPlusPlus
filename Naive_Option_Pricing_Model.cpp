@@ -29,7 +29,7 @@ double SimpleMonteCarlo(double Expiry,
 	for (unsigned long i = 0; i < NumberOfPaths; i++)
 	{
 		double thisGaussian = GetOneGaussianbyBoxMuller();
-		thisSpot = movedSpot * exp(RootVariance * thisGaussian);
+		thisSpot = movedSpot * exp(RootVariance* sqrt(Expiry) * thisGaussian);
 		double thisPayoff = thisSpot - Strike;
 		thisPayoff = thisPayoff > 0 ? thisPayoff : 0;
 		runningSum += thisPayoff;
